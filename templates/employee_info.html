@@ -1,0 +1,212 @@
+<html lang="en">
+
+<head>
+    <!-- <link rel="shortcut icon" href="#" />-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employee Burnout Prediction</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" rel="stylesheet">
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="static/css/employee.css">
+    <!-- <link rel="stylesheet" href="static/css/styles.css"> -->
+
+
+</head>
+
+<body>
+
+    <!-- As a heading -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{url_for('home')}}"> BURNOUT</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{url_for('signs')}}">Signs</a></li>
+                        <li><a href="{{url_for('about_page')}}">About</a></li>
+                        <li><a href="{{url_for('employee_info')}}">Check Employee Burnout</a></li>
+                        <li><a href="{{url_for('prevent')}}">Prevention</a></li>
+                        <li><a href="{{url_for('developers')}}">Developers</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <br>
+        <br>
+        <br>
+        <br>
+    <div class="container">
+
+
+
+        <form action="{{url_for('burnout')}}" method="POST">
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Date</h5>
+                            <input type="datetime-local" name="Date" id="Date" required="required">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">PM10</h5>
+                            <input type="Number" step='any' name="PM10" id="PM10" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">NO</h5>
+                            <input type="Number" step='any' name="NO" id="NO" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+        
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">NO2</h5>
+                            <input type="Number" step='any' name="NO2" id="NO2" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">NOx</h5>
+                            <input type="Number" step='any' name="NOx" id="NOx" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+        
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">NH3</h5>
+                            <input type="Number" step='any' name="NH3" id="NH3" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">CO</h5>
+                            <input type="Number" step='any' name="CO" id="CO" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">SO2</h5>
+                            <input type="Number" step='any' name="SO2" id="SO2" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">O3</h5>
+                            <input type="Number" step='any' name="O3" id="O3" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Benzene</h5>
+                            <input type="Number" step='any' name="Benzene" id="Benzene" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Toluene</h5>
+                            <input type="Number" step='any' name="Toluene" id="Toluene" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Xylene</h5>
+                            <input type="Number" step='any' name="Xylene" id="Xylene" required="required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+            <br>
+            <br>
+            <!-- Submit -->
+            <input type="submit" value="Submit" class="btn btn-secondary">
+        </form>
+        <a class="btn btn-primary" href="{{url_for('employee_info')}}">Check Burnout</a>
+
+        <br>
+        <br>
+        <div class="container">
+        <div class="jumbotron" id="three">                
+                <h1 class="display-4">{{ prediction_text }}</h1>
+            </div>
+</div>
+        <br>
+        <br>
+        <p class="slogan">&copyErrorCode~All Rights Reserved</p>
+
+    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
