@@ -1,0 +1,118 @@
+body {
+	font-family: 'Poppins', sans-serif;
+	background: url('https://images.unsplash.com/photo-1542089078-9086d071d8da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+}
+header .carousel-inner .item {
+	height: 100vh;
+}
+.navbar {
+    background-color: #333333;
+}
+
+a {
+    color: #f1f9f9;
+}
+
+a:hover {
+    color: #f0f0f0;
+  }
+.navbar-inverse {
+	background-color: transparent;
+	border-color: transparent;
+}
+.navbar-inverse .navbar-brand {
+	color: #f0f0f0;
+	font-size: 40px;
+	padding: 40px 15px;
+	font-weight: 900;
+}
+.nav.navbar-nav.navbar-right {
+	margin: 25px 0;
+}
+.navbar-inverse .navbar-nav>li>a {
+	color: #fff;
+	text-transform: uppercase;
+}
+.banner {
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 100vh;
+}
+.carousel-caption {
+	padding-bottom: 250px;
+	font-family: poppins;
+}
+.carousel-caption h2 {
+	font-size: 70px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.carousel-caption h2 span {
+	color: #EDBB00;
+}
+.carousel-caption a {
+	background: #EDBB00;
+	padding: 15px 35px;
+	display: inline-block;
+	margin-top: 15px;
+	color: #fff;
+	text-transform: uppercase;
+	border-radius: 25px;
+}
+.carousel-control.right {
+	background-image: none;
+}
+.carousel-control.left {
+	background-image: none;
+}
+.carousel-indicators .active {
+	background-color: #EDBB00;
+	border-color: #EDBB00;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.carousel-caption {
+		padding-bottom: 350px;
+	}
+	.carousel-caption h2 {
+		font-size: 50px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.navbar-inverse .navbar-brand {
+		font-size: 30px;
+		padding: 20px 15px;
+	}
+	.navbar-collapse {
+		background: rgba(0, 0, 0, 0.5);
+	}
+	.carousel-caption {
+		padding-bottom: 120px;
+	}
+	.carousel-caption h2 {
+		font-size: 25px;
+	}
+	.carousel-caption h3 {
+		font-size: 18px;
+	}
+	.carousel-caption a {
+		padding: 10px 25px;
+	}
+}
+#three
+{
+	text-align: center;
+	border:1px solid blue;
+	border-radius: 50%;
+	text-shadow: 0px 4px 8px red,
+	0px 8px 15px yellow;
+	color: blue;
+}
+h1
+{
+	text-transform: uppercase;
+	text-shadow: 0px 4px 8px yellow,
+	0px 8px 15px orange;
+}

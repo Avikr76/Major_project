@@ -1,0 +1,52 @@
+html,body
+{
+	height: 100%;
+	background: #c21500;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ffc500, #c21500);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ffc500, #c21500); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	background-size: cover;
+	background-position: center;
+
+}
+.jumbotron 
+{
+	opacity:70%;
+	background: #B3FFAB;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #12FFF7, #B3FFAB);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #12FFF7, #B3FFAB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#one
+{
+	text-align: center;
+	border:1px solid blue;
+	text-shadow: 0px 4px 8px red,
+	0px 8px 15px yellow;
+	color: blue;
+}
+#three
+{
+	text-align: center;
+	border:1px solid blue;
+	border-radius: 50%;
+	text-shadow: 0px 4px 8px red,
+	0px 8px 15px yellow;
+	color: blue;
+}
+h1
+{
+	text-transform: uppercase;
+	text-shadow: 0px 4px 8px yellow,
+	0px 8px 15px orange;
+}
+.slogan
+{
+	text-transform: uppercase;
+	text-align: center;
+	color: black;
+}
+.lead
+{
+	font-size: 20px;
+}
