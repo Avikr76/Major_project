@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--Code by Divinector (www.divinectorweb.com)-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prediction and Monitoring of PM2.5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/about.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{url_for('home')}}"> PM 2.5</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{url_for('prediction')}}">Predict PM 2.5</a></li>
+                        <li><a href="{{url_for('about_page')}}">About</a></li>
+                        <li><a href="{{url_for('prediction')}}">Check PM 2.5(manually)</a></li>
+                        <li><a href="{{url_for('developers')}}">Developers</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+      <div class="container p-3 my-3 bg-primary text-white">
+        <h1>Overview</h1>
+        <p>Work-life balance is quickly morphing into that of work-life integration. Employees are hyper-connected across multiple platforms and devices to their organizations, work, their teams and there is less compartmentalization. Instead of offering traditional wellness programs and initiatives as one-off offerings, there is a need to create a continuous, integrated focus on preventing burnout, and proactively identifying triggers that can cause burnout.  </p>
+      </div>
+      <div class="container p-3 my-3 bg-dark text-white">
+        <h1>Challenge</h1>
+        <p>Monitor the behavioural and personality traits of the employee to identify and predict the signs of burnout. Starting with the causes of burnout, it should be possible to predict burnout in the early stages.</p>
+      </div>
+
+      <div class="container p-3 my-3 bg-primary text-white">
+          <h1>Factors affecting the Burnout</h1>
+        <h3>Date of Joining</h3>
+        <p>A date on which an employee joins a company</p>
+    </div>
+    <div class="container p-3 my-3 bg-primary text-white">
+        <h3>Designation</h3>
+        <p>The designation of the employee of work in the organization.
+            In the range of [0.0, 5.0] bigger is higher designation.</p>
+        </div>
+        <div class="container p-3 my-3 bg-primary text-white">
+            <h3>Gender</h3>
+        <p>The gender of the employee (Male/Female)</p>
+    </div>
+    <div class="container p-3 my-3 bg-primary text-white">
+        <h3>Company Type</h3>
+        <p>The type of company where the employee is working (Service/Product)</p>
+    </div>
+    <div class="container p-3 my-3 bg-primary text-white">
+        <h3>WFH Setup Available</h3> 
+        <p>Is the work from home facility available for the employee (Yes/No)</p>
+    </div>
+    <div class="container p-3 my-3 bg-primary text-white">
+        <h3>Resource Allocation</h3> 
+        <p>The amount of resource allocated to the employee to work, ie. number of working hours.
+            In the range of [1.0, 10.0] (higher means more resource)
+        </p>
+    </div>
+    <div class="container p-3 my-3 bg-primary text-white">
+        <h3>Mental Fatigue Score</h3> 
+        <p>The level of fatigue mentally the employee is facing.
+            In the range of [0.0, 10.0] where 0.0 means no fatigue and 10.0 means completely fatigue.</p>
+        </div>
+        <br>
+        <br>
+        <div class="container">
+        	<h1 class="animated bounceInLeft">Some Of the Visualization</h1>
+        <div class="cc">
+            <div class="card1">
+                <img class="card-img-top" src="static/images/1 (1).jpeg" alt="Card image cap">
+            </div>
+      
+            <div class="card2">
+                <img class="card-img-top" src="static/images/1 (2).jpeg">
+            </div>
+        </div>
+        <div class="cc">
+            <div class="card1">
+                <img class="card-img-top" src="static/images/1 (3).jpeg">
+            </div>
+            <div class="card2">
+                <img class="card-img-top" src="static/images/1 (4).jpeg">
+            </div>
+        </div>
+        <div class="cc">
+        <div class="card1">
+            <img class="card-img-top" src="static/images/1 (5).jpeg">
+            </div>
+    <div class="card2">
+        <img class="card-img-top" src="static/images/1 (6).jpeg">
+        </div>
+</div>
+<div class="cc">
+<div class="card1">
+    <img class="card-img-top" src="static/images/1 (7).jpeg">
+    </div>
+<div class="card2">
+    <img class="card-img-top" src="static/images/1 (8).jpeg">
+    </div>
+</div>
+<div class="cc">
+<div class="card1">
+    <img class="card-img-top" src="static/images/1 (9).jpeg">
+</div>
+<div class="card2">
+    <img class="card-img-top" src="static/images/1 (10).jpeg">
+</div>
+</div>
+<div class="cc">
+<div class="card1">
+    <img class="card-img-top" src="static/images/1 (11).jpeg">
+</div>
+<div class="card2">
+    <img class="card-img-top" src="static/images/1 (12).jpeg">
+</div>
+</div>
+<div class="cc">
+<div class="card1">
+    <img class="card-img-top" src="static/images/1 (13).jpeg">
+</div>
+<div class="card2">
+    <img class="card-img-top" src="static/images/1 (14).jpeg">
+</div>
+</div>
+<div class="cc">
+<div class="card1">
+    <img class="card-img-top" src="static/images/1 (15).jpeg">
+</div>
+        </div>
+    </div>
+<p class="slogan">&copyErrorCode~All Rights Reserved</p>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
