@@ -53,35 +53,25 @@ print(math.sqrt(mean_squared_error(np.array(y_test),y_pred)))
 import pickle
 file = open('air_pollution.pkl', 'wb')
 pickle.dump(rfc, file)
-#model = pickle.load(open("employee_burnout_rf.pkl", "rb"))
-#employee_b = pickle.load(model)
 
 @app.route("/")
 def home():
     return render_template("home.html")
 
-@app.route("/employee_info")
-def employee_info():
-    return render_template("employee_info.html")
+@app.route("/prediction")
+def prediction():
+    return render_template("prediction.html")
 
 @app.route("/about")
 def about_page():
     return render_template("about.html")
 
-@app.route("/sign")
-def signs():
-    return render_template("signs.html")
-
-@app.route("/prevention")
-def prevent():
-    return render_template("prevent.html")
-
 @app.route("/developer")
 def developers():
     return render_template("developer.html")
 
-@app.route("/burnout", methods = ["GET", "POST"])
-def burnout():
+@app.route("/predict_pm", methods = ["GET", "POST"])
+def predict_pm():
     if request.method == "POST":
 
         # Date
@@ -119,7 +109,7 @@ def burnout():
 
         output=round(prediction[0],3)
         #print(output)
-        return render_template('employee_info.html',prediction_text="PM2.5 level is {}".format(output))
+        return render_template('prediction.html',prediction_text="PM2.5 level is {}".format(output))
 
 
     return render_template("home.html")
