@@ -1,0 +1,85 @@
+body,html
+{
+	height: 100%;
+	
+	background: #3494E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	background-position: center;
+	background-size: cover;
+	align-items: center;
+	justify-content: center;
+}
+h1
+{
+	text-align: center;
+	font-weight: bold;
+	color: red;
+	text-shadow: 0 5px 10px blue;
+}
+.cc
+{
+	position: relative;
+	width: 1100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 30px;
+}
+.cc .card
+{
+	position: relative;
+	max-width: 300px;
+	height: 215px;
+	display: flex;
+	padding: 20px 15px;
+	margin: 50px 10px;
+	flex-direction: column;
+	transition: 0s ease-in-out;
+	background: #fff;
+	box-shadow: 0 5px 202px rgba(0,0,0,0.5);
+}
+.cc .card:hover
+{
+	height: 650px;
+}
+.cc .card .imgBx
+{
+	position: relative;
+	width: 260px;
+	height: 150px;
+	top: -60px;
+	left: 20px;
+	z-index: 1;
+	box-shadow: 0 5px 20px rgba(100,0,0,0.2);
+}
+.cc .card .imgBx img
+{
+	max-width: 100%;
+	border-radius: 4px;
+}
+.cc .card .content
+{
+	position: relative;
+	margin-top: -140px;
+	padding: 10px 15px;
+	text-align: center ;
+	visibility: visible;
+	color: #111;
+	opacity: 0;
+	transition: 0.3s ease-in-out;
+}
+.cc .card:hover .content
+{
+	visibility: visible;
+	opacity: 1;
+	margin-top: 0px;
+	transition-delay: 0s;
+}
+.footer
+{
+	text-align: center;
+	color: red;
+}

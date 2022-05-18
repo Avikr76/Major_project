@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Employee Burnout Prediction</title>
+    <title>Prediction and Monitoring of PM2.5</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -27,17 +27,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{url_for('home')}}"> BURNOUT</a>
+                    <a class="navbar-brand" href="{{url_for('home')}}"> PM 2.5</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{url_for('signs')}}">Signs</a></li>
+                        <li><a href="{{url_for('prediction')}}">Predict PM 2.5</a></li>
                         <li><a href="{{url_for('about_page')}}">About</a></li>
-                        <li><a href="{{url_for('employee_info')}}">Check Employee Burnout</a></li>
-                        <li><a href="{{url_for('prevent')}}">Prevention</a></li>
+                        <li><a href="{{url_for('prediction')}}">Check PM 2.5(manually)</a></li>
                         <li><a href="{{url_for('developers')}}">Developers</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
