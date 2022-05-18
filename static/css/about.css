@@ -1,8 +1,8 @@
 body {
 	font-family: 'Poppins', sans-serif;
 background: #ec008c;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #fc6767, #ec008c);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #fc6767, #ec008c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: -webkit-linear-gradient(to right, #f8e4e4, #f8e4e4);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f0eaea, #f4f1f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 header .carousel-inner .item {
 	height: 100vh;
@@ -125,5 +125,5 @@ h1
 {
 	font-weight: bold;
 	font-size: 10px;
-	color: blue;
+	color: rgb(224, 224, 242);
 }
