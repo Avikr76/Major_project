@@ -1,15 +1,13 @@
 body {
 	font-family: 'Poppins', sans-serif;
-background: #ec008c;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #f8e4e4, #f8e4e4);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #f0eaea, #f4f1f3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: #ccffcc;  /* fallback for old browsers */
 }
 header .carousel-inner .item {
 	height: 100vh;
 }
-.navbar {
+/* .navbar {
     background-color: #333333;
-}
+} */
 
 a {
     color: #f1f9f9;
@@ -18,11 +16,11 @@ a {
 a:hover {
     color: #f0f0f0;
   }
-.navbar-inverse {
+/* .navbar-inverse {
 	background-color: transparent;
 	border-color: transparent;
-}
-.navbar-inverse .navbar-brand {
+} */
+/* .navbar-inverse .navbar-brand {
 	color: #f0f0f0;
 	font-size: 40px;
 	padding: 40px 15px;
@@ -34,7 +32,7 @@ a:hover {
 .navbar-inverse .navbar-nav>li>a {
 	color: #fff;
 	text-transform: uppercase;
-}
+} */
 .banner {
 	-webkit-background-size: cover;
 	background-size: cover;

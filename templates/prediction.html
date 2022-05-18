@@ -17,7 +17,7 @@
 
 </head>
 
-<body background="static/images/airpollution3.jpg" >
+<body>
 
     <!-- As a heading -->
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
@@ -60,7 +60,7 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Date</h5>
+                            <h5 class="card-title"><b>Date</b></h5>
                             <input type="datetime-local" name="Date" id="Date" required="required">
                         </div>
                     </div>
@@ -69,16 +69,12 @@
                 <br>
                 <br>
             </div>
-
-            <br>
-            <br>
-            <br>
-
+            <br>  
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">PM10</h5>
+                            <h5 class="card-title"><b>PM10</b></h5>
                             <input type="Number" step='any' name="PM10" id="PM10" required="required">
                         </div>
                     </div>
@@ -86,21 +82,19 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">NO</h5>
+                            <h5 class="card-title"><b>NO</b></h5>
                             <input type="Number" step='any' name="NO" id="NO" required="required">
                         </div>
                     </div>
                 </div>
             </div>
-
-
             <br>
         
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">NO2</h5>
+                            <h5 class="card-title"><b>NO2</b></h5>
                             <input type="Number" step='any' name="NO2" id="NO2" required="required">
                         </div>
                     </div>
@@ -108,20 +102,18 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">NOx</h5>
+                            <h5 class="card-title"><b>NOx</b></h5>
                             <input type="Number" step='any' name="NOx" id="NOx" required="required">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <br>
-        
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">NH3</h5>
+                            <h5 class="card-title"><b>NH3</b></h5>
                             <input type="Number" step='any' name="NH3" id="NH3" required="required">
                         </div>
                     </div>
@@ -129,7 +121,7 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">CO</h5>
+                            <h5 class="card-title"><b>CO</b></h5>
                             <input type="Number" step='any' name="CO" id="CO" required="required">
                         </div>
                     </div>
@@ -139,7 +131,7 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">SO2</h5>
+                            <h5 class="card-title"><b>SO2</b></h5>
                             <input type="Number" step='any' name="SO2" id="SO2" required="required">
                         </div>
                     </div>
@@ -147,7 +139,7 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">O3</h5>
+                            <h5 class="card-title"><b>O3</b></h5>
                             <input type="Number" step='any' name="O3" id="O3" required="required">
                         </div>
                     </div>
@@ -157,7 +149,7 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Benzene</h5>
+                            <h5 class="card-title"><b>Benzene</b></h5>
                             <input type="Number" step='any' name="Benzene" id="Benzene" required="required">
                         </div>
                     </div>
@@ -165,7 +157,7 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Toluene</h5>
+                            <h5 class="card-title"><b>Toluene</b></h5>
                             <input type="Number" step='any' name="Toluene" id="Toluene" required="required">
                         </div>
                     </div>
@@ -175,21 +167,20 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Xylene</h5>
+                            <h5 class="card-title"><b>Xylene</b></h5>
                             <input type="Number" step='any' name="Xylene" id="Xylene" required="required">
                         </div>
                     </div>
                 </div>
             </div>
 
-
             <br>
             <br>
             <br>
             <!-- Submit -->
-            <input type="submit" value="Submit" class="btn btn-secondary">
+            <input type="submit" value="Submit" class="btn btn-secondary" style="margin-left: 30%">
         </form>
-        <a class="btn btn-primary" href="{{url_for('prediction')}}">Check PM 2.5</a>
+        <a class="btn btn-primary" href="{{url_for('prediction')}}" style="margin-left: 28%">Check PM 2.5</a>
 
         <br>
         <br>
@@ -200,6 +191,7 @@
 </div>
         <br>
         <br>
+       
     </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
