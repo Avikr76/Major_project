@@ -1,6 +1,6 @@
 body {
 	font-family: 'Poppins', sans-serif;
-	background: url('https://images.unsplash.com/photo-1542089078-9086d071d8da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+	background: url(../images/airpollution3.jpg);
 }
 header .carousel-inner .item {
 	height: 100vh;

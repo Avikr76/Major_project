@@ -10,25 +10,61 @@ app = Flask(__name__)
 
 train_df = pd.read_csv('city_day.csv/city_day.csv')
 
-train_df['PM2.5'].fillna(np.mean(train_df['PM2.5']),inplace=True)
-train_df['PM10'].fillna(np.mean(train_df['PM10']),inplace=True)
-train_df['NO'].fillna(np.mean(train_df['NO']),inplace=True)
-train_df['NO2'].fillna(np.mean(train_df['NO2']),inplace=True)
-train_df['NOx'].fillna(np.mean(train_df['NOx']),inplace=True)
-train_df['NH3'].fillna(np.mean(train_df['NH3']),inplace=True)
-train_df['CO'].fillna(np.mean(train_df['CO']),inplace=True)
-train_df['SO2'].fillna(np.mean(train_df['SO2']),inplace=True)
-train_df['O3'].fillna(np.mean(train_df['O3']),inplace=True)
-train_df['Benzene'].fillna(np.mean(train_df['Benzene']),inplace=True)
-train_df['Toluene'].fillna(np.mean(train_df['Toluene']),inplace=True)
-train_df['Xylene'].fillna(np.mean(train_df['Xylene']),inplace=True)
-train_df['AQI'].fillna(np.mean(train_df['AQI']),inplace=True)
-
 train_df['day']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.day
 train_df['month']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.month
 train_df['year']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.year
 
 train_df.drop(['Date','City','AQI_Bucket'],axis=1,inplace=True)
+
+## filling mean values
+def fill_mean(data):#replacing null fields with the mean value of the respective filed
+    null_fields = data.isna().sum()
+    col = data.columns #storing the column names
+    x = 0
+    for i in null_fields:
+        if i != 0:
+            data = data.fillna({col[x]:data[col[x]].mean()})# replaces null field with mean of column values
+        x += 1     
+    return data
+
+train_df = fill_mean(train_df)
+
+## handling outliers
+
+def detect_outliers_iqr(data):
+    outliers = []
+    data = sorted(data)
+    q1 = np.percentile(data, 25)
+    q3 = np.percentile(data, 75)
+    IQR = q3-q1
+    lwr_bound = q1-(1.5*IQR)
+    upr_bound = q3+(1.5*IQR)
+    for i in data: 
+        if (i<lwr_bound or i>upr_bound):
+            outliers.append(i)
+    return outliers
+
+def collect_outliers_iqr(data):
+    outliers_detected_iqr = {}
+    for i in data.columns:
+        outliers = detect_outliers_iqr(data[i])
+        outliers_detected_iqr[i] = outliers
+    return outliers_detected_iqr
+
+
+def floor_clapp_outliers(data, outliers):
+    for i, j in outliers.items():
+        if len(outliers[i]) != 0:
+            IQR = data[i].quantile(0.75) - data[i].quantile(0.25)
+            lower_bridge = data[i].quantile(0.25) - (IQR*1.5)
+            upper_bridge = data[i].quantile(0.75) + (IQR*1.5)
+            data.loc[data[i] > upper_bridge, i] = upper_bridge
+            data.loc[data[i] < lower_bridge, i] = lower_bridge
+    return data
+
+outliers = collect_outliers_iqr(train_df)
+train_df = floor_clapp_outliers(train_df, outliers)
+
 train_df=train_df.round(decimals=3)
 
 X = train_df[['PM10', 'NO', 'NO2', 'NOx', 'NH3', 'CO', 'SO2', 'O3',
@@ -48,7 +84,6 @@ y_pred=y_pred.round(decimals=3)
 from sklearn.metrics import r2_score,mean_squared_error
 print(r2_score(y_test,y_pred))
 print(math.sqrt(mean_squared_error(np.array(y_test),y_pred)))
-
 
 import pickle
 file = open('air_pollution.pkl', 'wb')
@@ -109,7 +144,24 @@ def predict_pm():
 
         output=round(prediction[0],3)
         #print(output)
-        return render_template('prediction.html',prediction_text="PM2.5 level is {}".format(output))
+        def air_condition(pm_conc):
+            if pm_conc<=12.0:
+                aqi = "AQI level is Between 0 to 50 i.e Good Weather Conditions"
+            elif pm_conc>12.1 and pm_conc<=35.4:
+                aqi = "AQI level is Between 51 to 100 i.e Moderate Weather Conditions"
+            elif pm_conc>35.5 and pm_conc<=55.4:
+                aqi = "AQI level is Between 101 to 150 i.e Unhealthy Weather Conditions for Older Age Groups"
+            elif pm_conc>55.5 and pm_conc<=150.4:
+                aqi = "AQI level is Between 151 to 200 i.e Unhealthy Weather Conditions"
+            elif pm_conc>150.5 and pm_conc<=250.4:
+                aqi = "AQI level is Between 201 to 300 i.e Very Unhealthy Weather Conditions"
+            else:
+                aqi = "AQI level is Above 300 i.e Hazardous Weather Conditions"
+            return aqi
+
+        aqi = air_condition(output)
+        print(aqi)
+        return render_template('prediction.html',prediction_text="PM2.5 level is {} and {}".format(output,aqi))
 
 
     return render_template("home.html")
