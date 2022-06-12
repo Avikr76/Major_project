@@ -4,7 +4,8 @@ import sklearn
 import pickle
 import pandas as pd
 import numpy as np
-
+import requests
+import datetime
 
 app = Flask(__name__)
 
@@ -163,8 +164,59 @@ def predict_pm():
         print(aqi)
         return render_template('prediction.html',prediction_text="PM2.5 level is {} and {}".format(output,aqi))
 
-
     return render_template("home.html")
+
+
+@app.route("/auto_prediction")
+def predict_auto_pm():
+    now = datetime.datetime.now()
+    msg = requests.get("https://thingspeak.com/channels/935349/feed.json")
+
+    PM10=str(msg.json()['feeds'][-1]['field1'])
+
+    NO=str(msg.json()['feeds'][-1]['field1'])
+
+    NO2=str(msg.json()['feeds'][-1]['field1'])
+
+    NOx=str(msg.json()['feeds'][-1]['field1'])
+
+    NH3=str(msg.json()['feeds'][-1]['field1'])
+
+    CO=str(msg.json()['feeds'][-1]['field1'])
+
+    SO2=str(msg.json()['feeds'][-1]['field1'])
+
+    O3=str(msg.json()['feeds'][-1]['field1'])
+
+    Benzene=str(msg.json()['feeds'][-1]['field1'])
+
+    Toluene=str(msg.json()['feeds'][-1]['field1'])
+
+    Xylene=str(msg.json()['feeds'][-1]['field1'])
+        
+    prediction=rfc.predict([[PM10, NO, NO2, NOx, NH3, CO, SO2, O3,
+        Benzene, Toluene, Xylene,now.day,now.month,now.year
+        ]])
+
+    output=round(prediction[0],3)
+    def air_condition(pm_conc):
+            if pm_conc<=12.0:
+                aqi = "AQI level is Between 0 to 50 i.e Good Weather Conditions"
+            elif pm_conc>12.1 and pm_conc<=35.4:
+                aqi = "AQI level is Between 51 to 100 i.e Moderate Weather Conditions"
+            elif pm_conc>35.5 and pm_conc<=55.4:
+                aqi = "AQI level is Between 101 to 150 i.e Unhealthy Weather Conditions for Older Age Groups"
+            elif pm_conc>55.5 and pm_conc<=150.4:
+                aqi = "AQI level is Between 151 to 200 i.e Unhealthy Weather Conditions"
+            elif pm_conc>150.5 and pm_conc<=250.4:
+                aqi = "AQI level is Between 201 to 300 i.e Very Unhealthy Weather Conditions"
+            else:
+                aqi = "AQI level is Above 300 i.e Hazardous Weather Conditions"
+            return aqi
+
+    aqi = air_condition(output)
+    return render_template('prediction_auto.html',prediction_text="PM2.5 level is {} and {}".format(output,aqi))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
