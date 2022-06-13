@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Flask==1.0.2
 Flask-Cors==3.0.7
 Flask-SQLAlchemy==2.4.4
@@ -85,7 +84,6 @@ jsonschema==2.6.0
 Werkzeug==2.0.3
 scikit-learn==0.21
 scipy==1.1.0
-=======
 Flask==1.0.2
 Flask-Cors==3.0.7
 Flask-SQLAlchemy==2.4.4
@@ -172,5 +170,3 @@ jsonschema==2.6.0
 Werkzeug==2.0.3
 scikit-learn==0.21
 scipy==1.1.0
->>>>>>> 2936fdd6d66f26cbd203b1731917fd5704b5bac3
-joblib==0.14.1
