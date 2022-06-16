@@ -9,13 +9,13 @@ import datetime
 
 app = Flask(__name__)
 
-train_df = pd.read_csv('city_day.csv/city_day.csv')
+train_df = pd.read_csv('mysore_data.csv')
 
 train_df['day']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.day
 train_df['month']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.month
 train_df['year']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.year
 
-train_df.drop(['Date','City','AQI_Bucket'],axis=1,inplace=True)
+train_df.drop(['Date'],axis=1,inplace=True)
 
 ## filling mean values
 def fill_mean(data):#replacing null fields with the mean value of the respective filed
@@ -68,9 +68,9 @@ train_df = floor_clapp_outliers(train_df, outliers)
 
 train_df=train_df.round(decimals=3)
 
-X = train_df[['PM10', 'NO', 'NO2', 'NOx', 'NH3', 'CO', 'SO2', 'O3',
-       'Benzene', 'Toluene', 'Xylene','day','month','year']]
-y = train_df['PM2.5']
+X = train_df[['Temperature', 'Humidity', 'Gas', 'CO', 'NH3',
+       'day', 'month', 'year']]
+y = train_df['PM 2.5 (ug/m3)']
 
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.35, random_state=0)
