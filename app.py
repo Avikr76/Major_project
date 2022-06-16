@@ -116,31 +116,17 @@ def predict_pm():
         month=int(pd.to_datetime(Date,format="%Y-%m-%d").month)
         year = int(pd.to_datetime(Date,format="%Y-%m-%d").year)
 
-        PM10=request.form['PM10']
+        Temperature=request.form['Temperature']
 
-        NO=request.form['NO']
+        Humidity=request.form['Humidity']
 
-        NO2=request.form['NO2']
-
-        NOx=request.form['NOx']
-
-        NH3=request.form['NH3']
+        Gas=request.form['Gas']
 
         CO=request.form['CO']
 
-        SO2=request.form['SO2']
-
-        O3=request.form['O3']
-
-        Benzene=request.form['Benzene']
-
-        Toluene=request.form['Toluene']
-
-        Xylene=request.form['Xylene']
+        NH3=request.form['NH3']
         
-        prediction=rfc.predict([[PM10, NO, NO2, NOx, NH3, CO, SO2, O3,
-        Benzene, Toluene, Xylene,day,month,year
-        ]])
+        prediction=rfc.predict([[Temperature,Humidity,Gas,CO,NH3,day,month,year]])
         #print(prediction)
 
         output=round(prediction[0],3)
@@ -172,31 +158,17 @@ def predict_auto_pm():
     now = datetime.datetime.now()
     msg = requests.get("https://thingspeak.com/channels/935349/feed.json")
 
-    PM10=str(msg.json()['feeds'][-1]['field1'])
+    Temperature=str(msg.json()['feeds'][-1]['field1'])
 
-    NO=str(msg.json()['feeds'][-1]['field1'])
+    Humidity=str(msg.json()['feeds'][-1]['field2'])
 
-    NO2=str(msg.json()['feeds'][-1]['field1'])
+    Gas=str(msg.json()['feeds'][-1]['field3'])
 
-    NOx=str(msg.json()['feeds'][-1]['field1'])
+    CO=str(msg.json()['feeds'][-1]['field4'])
 
-    NH3=str(msg.json()['feeds'][-1]['field1'])
-
-    CO=str(msg.json()['feeds'][-1]['field1'])
-
-    SO2=str(msg.json()['feeds'][-1]['field1'])
-
-    O3=str(msg.json()['feeds'][-1]['field1'])
-
-    Benzene=str(msg.json()['feeds'][-1]['field1'])
-
-    Toluene=str(msg.json()['feeds'][-1]['field1'])
-
-    Xylene=str(msg.json()['feeds'][-1]['field1'])
+    NH3=str(msg.json()['feeds'][-1]['field5'])
         
-    prediction=rfc.predict([[PM10, NO, NO2, NOx, NH3, CO, SO2, O3,
-        Benzene, Toluene, Xylene,now.day,now.month,now.year
-        ]])
+    prediction=rfc.predict([[Temperature,Humidity,Gas,CO,NH3,now.day,now.month,now.year]])
 
     output=round(prediction[0],3)
     def air_condition(pm_conc):
