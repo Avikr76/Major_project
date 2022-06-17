@@ -9,7 +9,7 @@ import datetime
 
 app = Flask(__name__)
 
-train_df = pd.read_csv('mysore_data.csv')
+train_df = pd.read_excel('mysore_data.xlsx')
 
 train_df['day']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.day
 train_df['month']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.month
@@ -68,8 +68,7 @@ train_df = floor_clapp_outliers(train_df, outliers)
 
 train_df=train_df.round(decimals=3)
 
-X = train_df[['Temperature', 'Humidity', 'Gas', 'CO', 'NH3',
-       'day', 'month', 'year']]
+X = train_df[['Temperature', 'Humidity', 'Gas', 'CO', 'NH3','PM10','day', 'month', 'year']]
 y = train_df['PM 2.5 (ug/m3)']
 
 from sklearn.model_selection import train_test_split
@@ -125,8 +124,10 @@ def predict_pm():
         CO=request.form['CO']
 
         NH3=request.form['NH3']
+
+        PM10 = '15.32'
         
-        prediction=rfc.predict([[Temperature,Humidity,Gas,CO,NH3,day,month,year]])
+        prediction=rfc.predict([[Temperature,Humidity,Gas,CO,NH3,PM10,day,month,year]])
         #print(prediction)
 
         output=round(prediction[0],3)
@@ -167,8 +168,10 @@ def predict_auto_pm():
     CO=str(msg.json()['feeds'][-1]['field4'])
 
     NH3=str(msg.json()['feeds'][-1]['field5'])
+
+    PM10 = '15.32'
         
-    prediction=rfc.predict([[Temperature,Humidity,Gas,CO,NH3,now.day,now.month,now.year]])
+    prediction=rfc.predict([[Temperature,Humidity,Gas,CO,NH3,PM10,now.day,now.month,now.year]])
 
     output=round(prediction[0],3)
     def air_condition(pm_conc):
