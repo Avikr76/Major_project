@@ -9,7 +9,7 @@ import datetime
 
 app = Flask(__name__)
 
-train_df = pd.read_excel('mysore_data.xlsx')
+train_df = pd.read_excel('mysore_city_data.xlsx')
 
 train_df['day']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.day
 train_df['month']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.month
