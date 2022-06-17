@@ -4,17 +4,18 @@ import sklearn
 import pickle
 import pandas as pd
 import numpy as np
-
+import requests
+import datetime
 
 app = Flask(__name__)
 
-train_df = pd.read_csv('city_day.csv/city_day.csv')
+train_df = pd.read_excel('mysore_city_data.xlsx')
 
 train_df['day']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.day
 train_df['month']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.month
 train_df['year']=pd.to_datetime(train_df.Date,format="%Y-%m-%d").dt.year
 
-train_df.drop(['Date','City','AQI_Bucket'],axis=1,inplace=True)
+train_df.drop(['Date'],axis=1,inplace=True)
 
 ## filling mean values
 def fill_mean(data):#replacing null fields with the mean value of the respective filed
@@ -67,9 +68,8 @@ train_df = floor_clapp_outliers(train_df, outliers)
 
 train_df=train_df.round(decimals=3)
 
-X = train_df[['PM10', 'NO', 'NO2', 'NOx', 'NH3', 'CO', 'SO2', 'O3',
-       'Benzene', 'Toluene', 'Xylene','day','month','year']]
-y = train_df['PM2.5']
+X = train_df[['Temperature', 'Humidity', 'Gas', 'CO', 'NH3','PM10','day', 'month', 'year']]
+y = train_df['PM 2.5 (ug/m3)']
 
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.35, random_state=0)
@@ -115,31 +115,19 @@ def predict_pm():
         month=int(pd.to_datetime(Date,format="%Y-%m-%d").month)
         year = int(pd.to_datetime(Date,format="%Y-%m-%d").year)
 
-        PM10=request.form['PM10']
+        Temperature=request.form['Temperature']
 
-        NO=request.form['NO']
+        Humidity=request.form['Humidity']
 
-        NO2=request.form['NO2']
-
-        NOx=request.form['NOx']
-
-        NH3=request.form['NH3']
+        Gas=request.form['Gas']
 
         CO=request.form['CO']
 
-        SO2=request.form['SO2']
+        NH3=request.form['NH3']
 
-        O3=request.form['O3']
-
-        Benzene=request.form['Benzene']
-
-        Toluene=request.form['Toluene']
-
-        Xylene=request.form['Xylene']
+        PM10 = '15.32'
         
-        prediction=rfc.predict([[PM10, NO, NO2, NOx, NH3, CO, SO2, O3,
-        Benzene, Toluene, Xylene,day,month,year
-        ]])
+        prediction=rfc.predict([[Temperature,Humidity,Gas,CO,NH3,PM10,day,month,year]])
         #print(prediction)
 
         output=round(prediction[0],3)
@@ -163,8 +151,47 @@ def predict_pm():
         print(aqi)
         return render_template('prediction.html',prediction_text="PM2.5 level is {} and {}".format(output,aqi))
 
-
     return render_template("home.html")
+
+
+@app.route("/auto_prediction")
+def predict_auto_pm():
+    now = datetime.datetime.now()
+    msg = requests.get("https://thingspeak.com/channels/1770952/feed.json")
+
+    Temperature=str(msg.json()['feeds'][-1]['field1'])
+
+    Humidity=str(msg.json()['feeds'][-1]['field2'])
+
+    Gas=str(msg.json()['feeds'][-1]['field3'])
+
+    CO=str(msg.json()['feeds'][-1]['field4'])
+
+    NH3=str(msg.json()['feeds'][-1]['field5'])
+
+    PM10 = '15.32'
+        
+    prediction=rfc.predict([[Temperature,Humidity,Gas,CO,NH3,PM10,now.day,now.month,now.year]])
+
+    output=round(prediction[0],3)
+    def air_condition(pm_conc):
+            if pm_conc<=12.0:
+                aqi = "AQI level is Between 0 to 50 i.e Good Weather Conditions"
+            elif pm_conc>12.1 and pm_conc<=35.4:
+                aqi = "AQI level is Between 51 to 100 i.e Moderate Weather Conditions"
+            elif pm_conc>35.5 and pm_conc<=55.4:
+                aqi = "AQI level is Between 101 to 150 i.e Unhealthy Weather Conditions for Older Age Groups"
+            elif pm_conc>55.5 and pm_conc<=150.4:
+                aqi = "AQI level is Between 151 to 200 i.e Unhealthy Weather Conditions"
+            elif pm_conc>150.5 and pm_conc<=250.4:
+                aqi = "AQI level is Between 201 to 300 i.e Very Unhealthy Weather Conditions"
+            else:
+                aqi = "AQI level is Above 300 i.e Hazardous Weather Conditions"
+            return aqi
+
+    aqi = air_condition(output)
+    return render_template('prediction_auto.html',prediction_text="PM2.5 level is {} and {}".format(output,aqi))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
