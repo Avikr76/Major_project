@@ -157,7 +157,7 @@ def predict_pm():
 @app.route("/auto_prediction")
 def predict_auto_pm():
     now = datetime.datetime.now()
-    msg = requests.get("https://thingspeak.com/channels/935349/feed.json")
+    msg = requests.get("https://thingspeak.com/channels/1770952/feed.json")
 
     Temperature=str(msg.json()['feeds'][-1]['field1'])
 
