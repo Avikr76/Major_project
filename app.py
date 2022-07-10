@@ -170,9 +170,7 @@ def predict_auto_pm():
     NH3=str(msg.json()['feeds'][-1]['field5'])
 
     PM10 = '15.32'
-    
-    print(Temperature,Humidity,Gas,CO,NH3,PM10)
-        
+            
     prediction=rfc.predict([[Temperature,Humidity,Gas,CO,NH3,PM10,now.day,now.month,now.year]])
 
     output=round(prediction[0],3)
