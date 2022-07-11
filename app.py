@@ -72,7 +72,7 @@ X = train_df[['Temperature', 'Humidity', 'Gas', 'CO', 'NH3','PM10','day', 'month
 y = train_df['PM 2.5 (ug/m3)']
 
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.35, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
 
 from sklearn.ensemble import RandomForestRegressor
 rfc = RandomForestRegressor(n_estimators = 150,random_state = 0)
