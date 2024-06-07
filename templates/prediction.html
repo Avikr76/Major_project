@@ -1,7 +1,6 @@
 <html lang="en">
 
 <head>
-    <!-- <link rel="shortcut icon" href="#" />-->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,16 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" rel="stylesheet">
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="static/css/prediction.css">
-    <!-- <link rel="stylesheet" href="static/css/styles.css"> -->
 
 
 </head>
 
 <body>
-
-    <!-- As a heading -->
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
@@ -32,7 +27,6 @@
                     <a class="navbar-brand" href="{{url_for('home')}}"> PM 2.5</a>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav navbar-right">
@@ -41,8 +35,8 @@
                         <li><a href="{{url_for('prediction')}}">Check PM 2.5(manually)</a></li>
                         <li><a href="{{url_for('developers')}}">Developers</a></li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </nav>
 
         <br>
@@ -70,20 +64,20 @@
                 <br>
             </div>
             <br>  
-            <div class="row">
+            <div class="row">                
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><b>Temperature</b></h5>
-                            <input type="Number" step='0.01' name="Temperature" id="Temperature" required="required">
+                            <h5 class="card-title"><b>Temperature(°C)</b></h5>
+                            <input type="Number" step='0.01' name="Temperature" id="Temperature" placeholder="0-50" required="required">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><b>Humidity</b></h5>
-                            <input type="Number" step='0.01' name="Humidity" id="Humidity" required="required">
+                            <h5 class="card-title"><b>Humidity(%)</b></h5>
+                            <input type="Number" step='0.01' name="Humidity" id="Humidity"  placeholder="20-90" required="required">
                         </div>
                     </div>
                 </div>
@@ -94,16 +88,16 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><b>Gas</b></h5>
-                            <input type="Number" step='0.01' name="Gas" id="Gas" required="required">
+                            <h5 class="card-title"><b>Gas(ppm)</b></h5>
+                            <input type="Number" step='0.01' name="Gas" id="Gas"  placeholder="10-1000"required="required">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><b>CO</b></h5>
-                            <input type="Number" step='0.01' name="CO" id="CO" required="required">
+                            <h5 class="card-title"><b>CO(ppm)</b></h5>
+                            <input type="Number" step='0.01' name="CO" id="CO"  placeholder="10-500"required="required">
                         </div>
                     </div>
                 </div>
@@ -113,8 +107,8 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title"><b>NH3</b></h5>
-                            <input type="Number" step='0.01' name="NH3" id="NH3" required="required">
+                            <h5 class="card-title"><b>NH3(ppm)</b></h5>
+                            <input type="Number" step='0.01' name="NH3" id="NH3"  placeholder="5-500"required="required">
                         </div>
                     </div>
                 </div>
